@@ -1,0 +1,2414 @@
+% Welcome! This is the unofficial University of Udine beamer template.
+
+% See README.md for more informations about this template.
+
+% This style has been developed following the "Manuale di Stile"
+% (Style Manual) of the University of Udine. You can find the
+% manual here: https://www.uniud.it/it/ateneo-uniud/ateneo-uniud/identita-visiva/manuali-immagine-stile/manuale-stile
+
+% Note: for some reason, the RGB values specified in the manual
+% do NOT render correctly in Beamer, so they have been redefined
+% for this document using the high level chromo-optic deep neural 
+% quantistic technology offered by Microsoft Paint's color picker.
+
+% We defined four theme colors: UniBrown, UniBlue, UniGold
+% and UniOrange. For example, to write some uniud-brownish
+% text, just use: \textcolor{UniBrown}{Hello!}
+
+% Note that [usenames,dvipsnames] is MANDATORY due to compatibility
+% issues between tikz and xcolor packages.
+
+\documentclass[usenames,dvipsnames]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{cases}
+\usepackage{cancel}
+\usetheme{uniud}
+%set depth of Outline
+\setcounter{tocdepth}{2}
+%%% Bibliography
+\usepackage[style=authoryear,backend=biber]{biblatex}
+\addbibresource{bibliography.bib}
+
+% Author names in publication list are consistent 
+% i.e. name1 surname1, name2 surname2
+% See https://tex.stackexchange.com/questions/106914/biblatex-does-not-reverse-the-first-and-last-names-of-the-second-author
+\DeclareNameAlias{author}{first-last}
+
+%%% Suppress biblatex annoying warning
+\usepackage{silence}
+\WarningFilter{biblatex}{Patching footnotes failed}
+
+%%% Some useful commands
+% pdf-friendly newline in links
+\newcommand{\pdfnewline}{\texorpdfstring{\newline}{ }} 
+% Fill the vertical space in a slide (to put text at the bottom)
+\newcommand{\framefill}{\vskip0pt plus 1filll}
+
+
+\title[IHEP SUSY Group Meeting]{Group Meeting}
+\date[Oct 16, 2024]{Oct 16, 2024}
+\author[Chengxin Liao]{
+  Chengxin Liao
+  \pdfnewline
+  \texttt{lcx1937629829@icloud.com}
+}
+\institute{Department of Physics, Shandong University}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{C1N2ISR:introduction}
+\subsection{classify by tau}
+\begin{frame}
+\frametitle{C1N2ISR:introduction}
+\framesubtitle{classify by tau}
+From Feynman diagram of C1N2ISR, I'll classify the analysis by the type of tau.
+
+\vskip 0.2cm
+
+It's obvious that there two situations, one is 1tau, the other one is 3tau.
+
+
+\begin{columns}
+    \column{0.6\textwidth}
+    \raggedright
+	\begin{equation*}
+	C1N2ISR:
+	\left\{
+	\begin{split}
+		& 1tau
+		\left\{
+		\begin{split}
+		& 1H:nLeps=0,nTaus\geq 1\\
+		& 1L:nLeps\geq0
+		\end{split}
+		\right.
+		\\
+		& 3tau
+		\left\{
+		\begin{split}
+		& 3H:nLeps=0,nTaus\geq 3\\
+		& 2H1L:nLeps=1,nTaus\geq 2\\
+		& 1H2L:nLeps=2,nTaus\geq 1\\
+		& 3L:nLeps\geq 3
+		\end{split}
+		\right.
+	\end{split}
+	\right.
+	\end{equation*}
+	
+    \column{0.7\textwidth}
+    
+    \raggedleft
+    \begin{figure}
+    \includegraphics[width = 0.5\textwidth]{graphics/Feynman diagram.png}
+    \end{figure}
+ \end{columns}
+
+\end{frame}
+
+\section{C1N2ISR:MC modeling}
+\subsection{selection}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{selection}
+\begin{enumerate}
+	\item nLeps cut and nTaus cut show in previous page
+	\item MET$\geq 150$, pass MET trigger
+	\item b-veto
+	\item opposite sign(?)
+\end{enumerate}
+\begin{figure}
+	\centering
+	\includegraphics[width = 0.5\textwidth]{graphics/cut.png}
+\end{figure}
+\end{frame}
+
+\subsection{Variable explain}
+\begin{frame}
+	\frametitle{C1N2ISR:MC modeling}
+	\framesubtitle{Variable explanation}
+\begin{equation*}
+	variable:\left\{
+	\begin{split}
+		&\Delta\eta:\text{dEtat1j,dEtat2j,dEtatt(t1j,t2j,tt is the pseudorapidity}\\ 
+		&\text{between tau1(tau2) and jet(tau2)}\\
+		&\Delta\phi:dPhi(t1j,t1x,t2j,t2x,xj,tt)\\
+		&\Delta R:dR(t1j,t1x,t2j,t2x,xj,tt),R = \sqrt{\Delta\eta^2 + \Delta\phi^2}\\
+		&\eta:\eta(jet,lep,tau)\\
+		&p_t:p_t(jet,lep,tau)\\
+		&num:(\text{Jet,Ele,Muon,Tau,Lep,Tight Tau})\\
+		&\text{transverse mass,stranverse mass:}\\
+		&MET:Met, Metsig(?)\\
+		&\text{invariant mass}
+	\end{split}
+	\right.
+\end{equation*}
+\end{frame}
+\subsection{mass distribution}
+\begin{frame}
+	\frametitle{C1N2:MC modeling}
+	\framesubtitle{mass distribution}
+	\begin{figure}
+		\centering
+		\includegraphics[width = 0.7\textwidth]{graphics/mass.png}
+	\end{figure}
+\end{frame}
+
+\subsection{MC modeling of the initial idea}
+\subsubsection{1H}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1H:\quad $\Delta\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dEtat1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dEtat2j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dEtatt.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+%    % 第二行
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_eta_jet.png}
+%    \end{minipage}
+%    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_eta_lep.png}
+%    \end{minipage}
+%    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_eta_tau.png}
+%    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1H:\quad $\Delta\phi$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhixj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhitt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1H:\quad $\Delta R$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dRt1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dRt1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dRt2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dRt2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dRxj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dRtt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1H:$\quad\eta$}
+% 第一行
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_phi_jet.png}
+%    \end{minipage}
+%    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_phi_lep.png}
+%    \end{minipage}
+%    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_phi_tau.png}
+%    \end{minipage}
+%    
+%    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_eta_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_eta_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_eta_tau.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1H:\quad $p_t$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_pt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_pt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_pt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+%    % 第二行
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit2x.png}
+%    \end{minipage}
+%    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhixj.png}
+%    \end{minipage}
+%    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhitt.png}
+%    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1H:\quad num}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_nEles.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_nJets.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_nLeps.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_nMuons.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_nTaus.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_nTightTaus.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1H:\quad transverse mass}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_mt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_mt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_mt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_mtx_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_mtx_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_mtx_tau.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1H:\quad stranverse mass, invariant mass, MET}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_Mll.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_MT2.png}
+    \end{minipage}
+    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit2j.png}
+%    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_MET.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/H_met/H_met_METsig.png}
+    \end{minipage}
+    \hfill
+    
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhitt.png}
+%    \end{minipage}
+\end{frame}
+
+\subsubsection{1L}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1L:\quad $\Delta\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dEtat1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dEtat2j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dEtatt.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1L:\quad $\Delta\phi$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dPhit1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dPhit1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dPhit2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dPhit2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dPhixj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dPhitt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1L:\quad $\Delta R$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dRt1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dRt1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dRt2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dRt2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dRxj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_dRtt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1L:$\quad\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_eta_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_eta_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_eta_tau.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1L:\quad $p_t$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_pt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_pt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_pt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1L:\quad num}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_nEles.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_nJets.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_nLeps.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_nMuons.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_nTaus.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_nTightTaus.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1L:\quad transverse mass}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_mt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_mt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_mt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_mtx_jet.png}
+    \end{minipage}
+        \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_mtx_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_mtx_tau.png}
+    \end{minipage}
+\end{frame}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1L:\quad stranverse mass, invariant mass, MET}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_Mll.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_MT2.png}
+    \end{minipage}
+    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit2j.png}
+%    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_MET.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/L_met/L_met_METsig.png}
+    \end{minipage}
+    \hfill
+    
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhitt.png}
+%    \end{minipage}
+
+\end{frame}
+
+\subsubsection{LLL}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLL:\quad $\Delta\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dEtat1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dEtat2j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dEtatt.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLL:\quad $\Delta\phi$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dPhit1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dPhit1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dPhit2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dPhit2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dPhixj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dPhitt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLL:\quad $\Delta R$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dRt1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dRt1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dRt2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dRt2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dRxj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_dRtt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1LLL:$\quad\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_eta_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_eta_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_eta_tau.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLL:\quad $p_t$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_pt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_pt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_pt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLL:\quad num}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_nEles.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_nJets.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_nLeps.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_nMuons.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_nTaus.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_nTightTaus.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLL:\quad transverse mass}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_mt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_mt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_mt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_mtx_jet.png}
+    \end{minipage}
+        \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_mtx_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_mtx_tau.png}
+    \end{minipage}
+\end{frame}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLL:\quad stranverse mass, invariant mass, MET}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_Mll.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_MT2.png}
+    \end{minipage}
+    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit2j.png}
+%    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_MET.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLL_met/LLL_met_METsig.png}
+    \end{minipage}
+    \hfill
+    
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhitt.png}
+%    \end{minipage}
+
+\end{frame}
+
+\subsubsection{LLH}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLH:\quad $\Delta\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dEtat1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dEtat2j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dEtatt.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1LLH:\quad $\Delta\phi$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dPhit1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dPhit1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dPhit2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dPhit2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dPhixj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dPhitt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLH:\quad $\Delta R$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dRt1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dRt1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dRt2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dRt2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dRxj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_dRtt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{1LLH:$\quad\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_eta_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_eta_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_eta_tau.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLH:\quad $p_t$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_pt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_pt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_pt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLH:\quad num}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_nEles.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_nJets.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_nLeps.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_nMuons.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_nTaus.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_nTightTaus.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLH:\quad transverse mass}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_mt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_mt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_mt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_mtx_jet.png}
+    \end{minipage}
+        \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_mtx_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_mtx_tau.png}
+    \end{minipage}
+\end{frame}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LLH:\quad stranverse mass, invariant mass, MET}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_Mll.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_MT2.png}
+    \end{minipage}
+    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit2j.png}
+%    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_MET.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LLH_met/LLH_met_METsig.png}
+    \end{minipage}
+    \hfill
+    
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhitt.png}
+%    \end{minipage}
+
+\end{frame}
+
+\subsubsection{LHH}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LHH:\quad $\Delta\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dEtat1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dEtat2j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dEtatt.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LHH:\quad $\Delta\phi$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dPhit1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dPhit1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dPhit2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dPhit2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dPhixj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dPhitt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LHH:\quad $\Delta R$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dRt1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dRt1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dRt2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dRt2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dRxj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_dRtt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LHH:$\quad\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_eta_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_eta_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_eta_tau.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LHH:\quad $p_t$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_pt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_pt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_pt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LHH:\quad num}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_nEles.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_nJets.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_nLeps.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_nMuons.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_nTaus.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_nTightTaus.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LHH:\quad transverse mass}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_mt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_mt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_mt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_mtx_jet.png}
+    \end{minipage}
+        \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_mtx_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_mtx_tau.png}
+    \end{minipage}
+\end{frame}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LHH:\quad stranverse mass, invariant mass, MET}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_Mll.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_MT2.png}
+    \end{minipage}
+    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit2j.png}
+%    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_MET.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LHH_met/LHH_met_METsig.png}
+    \end{minipage}
+    \hfill
+    
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhitt.png}
+%    \end{minipage}
+
+\end{frame}
+
+\subsubsection{HHH}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HHH:\quad $\Delta\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dEtat1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dEtat2j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dEtatt.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HHH:\quad $\Delta\phi$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dPhit1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dPhit1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dPhit2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dPhit2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dPhixj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dPhitt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HHH:\quad $\Delta R$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dRt1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dRt1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dRt2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dRt2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dRxj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_dRtt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HHH:$\quad\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_eta_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_eta_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_eta_tau.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HHH:\quad $p_t$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_pt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_pt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_pt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HHH:\quad num}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_nEles.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_nJets.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_nLeps.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_nMuons.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_nTaus.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_nTightTaus.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HHH:\quad transverse mass}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_mt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_mt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_mt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_mtx_jet.png}
+    \end{minipage}
+        \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_mtx_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_mtx_tau.png}
+    \end{minipage}
+\end{frame}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HHH:\quad stranverse mass, invariant mass, MET}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_Mll.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_MT2.png}
+    \end{minipage}
+    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit2j.png}
+%    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_MET.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HHH_met/HHH_met_METsig.png}
+    \end{minipage}
+    \hfill
+    
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhitt.png}
+%    \end{minipage}
+
+\end{frame}
+
+\subsection{merge channel}
+\begin{frame}
+here we only consider 3tau channel, so I will not discuss 1H and 1L.
+	\frametitle{C1N2ISR:MC modeling}
+	\framesubtitle{merge channel}
+	\begin{equation*}
+		\left.
+		\begin{split}
+			& 2L1H\\
+			& 1L2H\\
+		\end{split}
+		\right\} LH: nLeps\geq 1, nTaus\geq 1
+		\end{equation*}
+	\begin{equation*}
+		3H\rightarrow HH: nLeps=0,nTaus\geq 2
+	\end{equation*}
+\end{frame}
+
+\subsubsection{LH}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LH:\quad $\Delta\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dEtat1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dEtat2j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dEtatt.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LH:\quad $\Delta\phi$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dPhit1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dPhit1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dPhit2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dPhit2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dPhixj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dPhitt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LH:\quad $\Delta R$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dRt1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dRt1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dRt2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dRt2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dRxj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_dRtt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LH:$\quad\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_eta_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_eta_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_eta_tau.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LH:\quad $p_t$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_pt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_pt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_pt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LH:\quad num}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_nEles.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_nJets.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_nLeps.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_nMuons.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_nTaus.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_nTightTaus.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LH:\quad transverse mass}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_mt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_mt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_mt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_mtx_jet.png}
+    \end{minipage}
+        \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_mtx_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_mtx_tau.png}
+    \end{minipage}
+\end{frame}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{LH:\quad stranverse mass, invariant mass, MET}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_Mll.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_MT2.png}
+    \end{minipage}
+    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit2j.png}
+%    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_MET.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/LH_met/LH_met_METsig.png}
+    \end{minipage}
+    \hfill
+    
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhitt.png}
+%    \end{minipage}
+
+\end{frame}
+
+\subsubsection{HH}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HH:\quad $\Delta\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dEtat1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dEtat2j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dEtatt.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HH:\quad $\Delta\phi$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dPhit1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dPhit1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dPhit2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dPhit2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dPhixj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dPhitt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HH:\quad $\Delta R$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dRt1j.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dRt1x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dRt2j.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dRt2x.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dRxj.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_dRtt.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HH:$\quad\eta$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_eta_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_eta_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_eta_tau.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HH:\quad $p_t$}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_pt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_pt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_pt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HH:\quad num}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_nEles.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_nJets.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_nLeps.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_nMuons.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_nTaus.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_nTightTaus.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HH:\quad transverse mass}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_mt_jet.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_mt_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_mt_tau.png}
+    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_mtx_jet.png}
+    \end{minipage}
+        \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_mtx_lep.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_mtx_tau.png}
+    \end{minipage}
+\end{frame}
+\begin{frame}
+\frametitle{C1N2ISR:MC modeling}
+\framesubtitle{HH:\quad stranverse mass, invariant mass, MET}
+% 第一行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_Mll.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_MT2.png}
+    \end{minipage}
+    \hfill
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhit2j.png}
+%    \end{minipage}
+    
+    \vspace{0.5cm} % 图片之间的竖直间距
+
+    % 第二行
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_MET.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/HH_met/HH_met_METsig.png}
+    \end{minipage}
+    \hfill
+    
+%    \begin{minipage}{0.32\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{graphics/H_met/H_met_dPhitt.png}
+%    \end{minipage}
+
+\end{frame}
+
+
+\section{cutflow}
+\subsection{lephad cutflow with met trig}
+\begin{frame}
+\frametitle{cutflow}
+\framesubtitle{lephad cutflow with met trig}
+
+	\begin{table}[!ht]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        Cut name & baseline & signal tau cut & signal lep cut & pass MET trigger & MET>150 \\ \hline
+        Wjets & 36910790.2 +- 22959.74 & 20163118.47 +- 17726.83 & 19197702.26 +- 17326.57 & 400852.5 +- 856.02 & 62216.76 +- 217.23 \\ \hline
+        TopPair & 7534021.4 +- 1055.09 & 1512883.18 +- 476.74 & 1326081.89 +- 443.18 & 337671.69 +- 224.38 & 86832.83 +- 113.71 \\ \hline
+        SingleTop & 988110.24 +- 342.8 & 201833.19 +- 155.94 & 179968.97 +- 147.21 & 35029.51 +- 67.91 & 8832.05 +- 34.5 \\ \hline
+        OtherTop & 46197.95 +- 352.35 & 9191.57 +- 152.46 & 7865.8 +- 145.4 & 3198.06 +- 93.85 & 1163.16 +- 42.69 \\ \hline
+        Zttjets & 5779690.55 +- 9204.86 & 3220731.18 +- 6973.12 & 2654322.19 +- 6473.64 & 71148.75 +- 341.96 & 13209.66 +- 104.45 \\ \hline
+        Zlljets & 221114969.3 +- 28905.76 & 4055309.63 +- 4072.66 & 3950413.09 +- 4028.51 & 42308.0 +- 100.53 & 950.23 +- 9.06 \\ \hline
+        VV & 1310870.13 +- 2148.26 & 221902.39 +- 765.78 & 205260.58 +- 764.09 & 28031.04 +- 743.99 & 9250.07 +- 743.18 \\ \hline
+        Higgs & 15876.82 +- 7.5 & 7475.17 +- 5.66 & 5767.22 +- 4.99 & 739.45 +- 1.81 & 175.28 +- 0.89 \\ \hline
+        dijet & 2739992885.1 +- 382761122.33 & 207700675.42 +- 54043947.9 & 93294284.35 +- 32863616.87 & 17429.11 +- 4207.3 & 466.79 +- 118.86 \\ \hline
+        bkg & 3013693411.68 +- 382761124.23 & 237093120.19 +- 54043951.42 & 120821666.35 +- 32863622.33 & 936408.11 +- 4379.33 & 183096.84 +- 800.35 \\ \hline
+        bkg wo dijet & 273700526.58 +- 38123.38 & 29392444.78 +- 19501.61 & 27527382.0 +- 18951.78 & 918979.0 +- 1215.36 & 182630.05 +- 791.48 \\ \hline
+        data & 385358202.0 +- 19630.54 & 45104353.0 +- 6715.98 & 37211919.0 +- 6100.16 & 1185938.0 +- 1089.01 & 242884.0 +- 492.83 \\ \hline
+    \end{tabular}
+    }
+    
+\end{table}
+\end{frame}
+
+\subsection{hadhad cutflow with met trig}
+\begin{frame}
+	\frametitle{cutflow}
+	\framesubtitle{hadhad cutflow with met trig}
+	\begin{table}[!ht]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        Cut name & baseline & signal tau cut & signal lep cut & pass MET trigger & MET>150 \\ \hline
+        Wjets & 36910790.2 +- 22959.74 & 227485.23 +- 1770.31 & 73392.93 +- 955.13 & 37276.94 +- 471.71 & 11976.76 +- 189.99 \\ \hline
+        TopPair & 7534021.4 +- 1055.09 & 46602.11 +- 85.24 & 29154.71 +- 68.3 & 25781.67 +- 63.35 & 9935.89 +- 38.89 \\ \hline
+        SingleTop & 988110.24 +- 342.8 & 5067.94 +- 25.6 & 3222.52 +- 20.5 & 2828.31 +- 19.29 & 1158.14 +- 12.52 \\ \hline
+        OtherTop & 46197.95 +- 352.35 & 711.5 +- 22.85 & 306.71 +- 1.91 & 268.14 +- 1.82 & 135.81 +- 1.32 \\ \hline
+        Zttjets & 5779690.55 +- 9204.86 & 70018.94 +- 785.84 & 42543.37 +- 548.16 & 23154.34 +- 161.89 & 7118.17 +- 52.53 \\ \hline
+        Zlljets & 221114969.3 +- 28905.76 & 36458.71 +- 324.32 & 4319.3 +- 120.41 & 395.08 +- 4.87 & 158.51 +- 2.03 \\ \hline
+        VV & 1310870.13 +- 2148.26 & 7533.16 +- 24.19 & 3139.54 +- 13.46 & 2621.95 +- 11.2 & 1236.43 +- 6.55 \\ \hline
+        Higgs & 15876.82 +- 7.5 & 556.1 +- 1.72 & 338.81 +- 1.23 & 279.2 +- 1.09 & 115.88 +- 0.71 \\ \hline
+        dijet & 2739992885.1 +- 382761122.33 & 27609529.58 +- 26367725.95 & 27605283.03 +- 26367725.82 & 27535064.53 +- 26367714.5 & 885.99 +- 206.95 \\ \hline
+        bkg & 3013693411.68 +- 382761124.23 & 28003963.28 +- 26367726.02 & 27761700.9 +- 26367725.84 & 27627670.16 +- 26367714.5 & 32721.58 +- 288.8 \\ \hline
+        bkg wo dijet & 273700526.58 +- 38123.38 & 394433.7 +- 1966.15 & 156417.87 +- 1110.19 & 92605.63 +- 503.25 & 31835.58 +- 201.43 \\ \hline
+        data & 292613535.0 +- 17105.95 & 586282.0 +- 765.69 & 407240.0 +- 638.15 & 182101.0 +- 426.73 & 31921.0 +- 178.66 \\ \hline
+    \end{tabular}
+    }
+\end{table}
+\end{frame}
+\section{yield}
+\subsection{lephad yield with met trig}
+\begin{frame}
+\frametitle{yield}
+\framesubtitle{lephad yield with met trig}	
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+        Process & Yields \\ \hline
+        Wjets & 62216.76 +- 217.23 \\ \hline
+        TopPair & 86832.83 +- 113.71 \\ \hline
+        SingleTop & 8832.05 +- 34.5 \\ \hline
+        OtherTop & 1163.16 +- 42.69 \\ \hline
+        Zttjets & 13209.66 +- 104.45 \\ \hline
+        Zlljets & 950.23 +- 9.06 \\ \hline
+        VV & 9250.07 +- 743.18 \\ \hline
+        Higgs & 175.28 +- 0.89 \\ \hline
+        dijet & 466.79 +- 118.86 \\ \hline
+        bkg & 183096.84 +- 800.35 \\ \hline
+        bkg wo dijet & 182630.05 +- 791.48 \\ \hline
+        data & 164202.0 +- 405.22 \\ \hline
+    \end{tabular}
+\end{table}
+\end{frame}
+
+\subsection{hadhad yield with met trig}
+\begin{frame}
+	\frametitle{yield}
+	\framesubtitle{hadhad yield with met trig}
+	\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+        Process & Yields \\ \hline
+        Wjets & 11976.76 +- 189.99 \\ \hline
+        TopPair & 9935.89 +- 38.89 \\ \hline
+        SingleTop & 1158.14 +- 12.52 \\ \hline
+        OtherTop & 135.81 +- 1.32 \\ \hline
+        Zttjets & 7118.17 +- 52.53 \\ \hline
+        Zlljets & 158.51 +- 2.03 \\ \hline
+        VV & 1236.43 +- 6.55 \\ \hline
+        Higgs & 115.88 +- 0.71 \\ \hline
+        dijet & 885.99 +- 206.95 \\ \hline
+        bkg & 32721.58 +- 288.8 \\ \hline
+        bkg wo dijet & 31835.58 +- 201.43 \\ \hline
+        data & 31921.0 +- 178.66 \\ \hline
+    \end{tabular}
+\end{table}
+\end{frame}
+\section{backup}
+\begin{frame}
+	\frametitle{backup}
+	The definition of rapidity is $y = \frac{1}{2}ln\frac{E+p_z}{E-p_z}$.$\eta$ is pseudo-rapidity, $\eta = -ln(tan(\frac{\theta}{2})).$ It's easy to detect, and when speed close to light-speed, pseudo-rapidity nearly equal rapidity which can simplify detect of rapidity.
+	
+	$\phi$ is azimuthal angle of cylindrical coordinates
+	
+	R is angular distance, $R = \sqrt{\Delta\phi^2+\Delta\eta^2}$, R usually use to judge which particle belong to the same jet.
+	
+	METsig is Missing Transverse Energy Significance, $METsig = \frac{MET}{\sigma_{MET}}$, $\sigma_{MET}$ is the uncertainty of MET.
+	
+\end{frame}
+\section{problems and TODO}
+\begin{frame}
+	\frametitle{problems and TODO}
+	\framesubtitle{problems}
+	1. Why we not discuss 1H or 1L 
+	
+	2. How to judge truth tau and fake tau
+	
+	3. 
+	
+\end{frame}
+\end{document}

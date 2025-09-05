@@ -1,0 +1,13 @@
+# system file 
+*.DS_Store
+
+# temp file 
+*.tmp
+*.bak
+*.swp
+*.log
+
+# Office / PowerPoint temp file 
+~$*.ppt*
+~$*.pptx*
+

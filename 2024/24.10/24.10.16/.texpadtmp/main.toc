@@ -1,0 +1,24 @@
+\beamer@sectionintoc {1}{C1N2ISR:introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{classify by tau}{4}{0}{1}
+\beamer@sectionintoc {2}{C1N2ISR:MC modeling}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{selection}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Variable explain}{7}{0}{2}
+\beamer@subsectionintoc {2}{3}{mass distribution}{8}{0}{2}
+\beamer@subsectionintoc {2}{4}{MC modeling of the initial idea}{9}{0}{2}
+\beamer@subsubsectionintoc {2}{4}{1}{1H}{9}{0}{2}
+\beamer@subsubsectionintoc {2}{4}{2}{1L}{17}{0}{2}
+\beamer@subsubsectionintoc {2}{4}{3}{LLL}{25}{0}{2}
+\beamer@subsubsectionintoc {2}{4}{4}{LLH}{33}{0}{2}
+\beamer@subsubsectionintoc {2}{4}{5}{LHH}{41}{0}{2}
+\beamer@subsubsectionintoc {2}{4}{6}{HHH}{49}{0}{2}
+\beamer@subsectionintoc {2}{5}{merge channel}{57}{0}{2}
+\beamer@subsubsectionintoc {2}{5}{1}{LH}{58}{0}{2}
+\beamer@subsubsectionintoc {2}{5}{2}{HH}{66}{0}{2}
+\beamer@sectionintoc {3}{cutflow}{74}{0}{3}
+\beamer@subsectionintoc {3}{1}{lephad cutflow with met trig}{75}{0}{3}
+\beamer@subsectionintoc {3}{2}{hadhad cutflow with met trig}{76}{0}{3}
+\beamer@sectionintoc {4}{yield}{77}{0}{4}
+\beamer@subsectionintoc {4}{1}{lephad yield with met trig}{78}{0}{4}
+\beamer@subsectionintoc {4}{2}{hadhad yield with met trig}{79}{0}{4}
+\beamer@sectionintoc {5}{backup}{80}{0}{5}
+\beamer@sectionintoc {6}{problems and TODO}{82}{0}{6}

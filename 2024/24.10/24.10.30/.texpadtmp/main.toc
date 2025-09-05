@@ -1,0 +1,7 @@
+\beamer@sectionintoc {1}{C1N2ISR:double-check cutflow}{3}{0}{1}
+\beamer@sectionintoc {2}{C1N2ISR: CutCount}{6}{0}{2}
+\beamer@sectionintoc {3}{problems and TODO}{8}{0}{3}
+\beamer@sectionintoc {4}{backup}{10}{0}{4}
+\beamer@subsectionintoc {4}{1}{var definition}{11}{0}{4}
+\beamer@subsectionintoc {4}{2}{LH MC modeling}{12}{0}{4}
+\beamer@subsectionintoc {4}{3}{HH MC modeling}{20}{0}{4}
